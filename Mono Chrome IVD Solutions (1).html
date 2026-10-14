@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONO CHROME - FOR IVD SOLUTIONS | Advanced Diagnostics</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#990011',
+                            600: '#8b0000',
+                            700: '#70000d',
+                            800: '#520008',
+                            900: '#380004',
+                            950: '#210002',
+                        },
+                        slateDark: {
+                            800: '#0f172a',
+                            900: '#0a0f1d',
+                            950: '#050810'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            background-color: #050810;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(18, 26, 47, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(139, 0, 0, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(153, 0, 17, 0.7);
+            box-shadow: 0 10px 30px -10px rgba(139, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .burgundy-gradient {
+            background: linear-gradient(135deg, #990011 0%, #520008 100%);
+        }
+
+        .burgundy-glow {
+            box-shadow: 0 0 35px rgba(153, 0, 17, 0.45);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b0000;
+            border-radius: 4px;
+        }
+
+        /* Animated pulse ring */
+        @keyframes ringPulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0.3; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .animate-ring-pulse {
+            animation: ringPulse 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-slate-800/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BRAND LOGO -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <div class="relative w-11 h-11 flex items-center justify-center rounded-xl burgundy-gradient p-0.5 border border-brand-500/50 shadow-lg">
+                        <div class="w-full h-full bg-slateDark-900 rounded-[10px] flex items-center justify-center relative overflow-hidden">
+                            <i class="fa-solid fa-droplet text-brand-500 text-lg animate-bounce"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl font-black tracking-wider text-white font-inter">MONO CHROME</span>
+                            <span class="text-[10px] bg-brand-950 text-brand-400 border border-brand-800 px-2 py-0.5 rounded-full font-bold">EST. 2024</span>
+                        </div>
+                        <p class="text-[10px] font-bold text-gray-400 tracking-widest uppercase font-inter">FOR IVD SOLUTIONS</p>
+                    </div>
+                </div>
+
+                <!-- DESKTOP NAV LINKS -->
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+                    <a href="#home" class="nav-item text-white hover:text-brand-500 transition-colors" data-i18n="nav_home">الرئيسية</a>
+                    <a href="#solutions" class="nav-item text-gray-300 hover:text-brand-500 transition-colors" data-i18n="nav_products">حلول IVD</a>
+                    <a href="#technology" class="nav-item text-gray-300 hover:text-brand-500 transition-colors" data-i18n="nav_tech">تقنية M-Chip</a>
+                    <a href="#calculator" class="nav-item text-gray-300 hover:text-brand-500 transition-colors" data-i18n="nav_calc">حاسبة الاستهلاك</a>
+                    <a href="#about" class="nav-item text-gray-300 hover:text-brand-500 transition-colors" data-i18n="nav_about">عن الشركة</a>
+                    <a href="#compliance" class="nav-item text-gray-300 hover:text-brand-500 transition-colors" data-i18n="nav_compliance">الجودة والمعايير</a>
+                    <a href="#contact" class="nav-item text-gray-300 hover:text-brand-500 transition-colors" data-i18n="nav_contact">تواصل معنا</a>
+                </nav>
+
+                <!-- HEADER ACTIONS -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <!-- Dynamic Language Switcher -->
+                    <button onclick="toggleLanguage()" class="px-3.5 py-1.5 rounded-xl border border-gray-700 bg-slateDark-800 text-xs font-semibold text-gray-200 hover:border-brand-500 transition flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-brand-500"></i>
+                        <span id="lang-label">English</span>
+                    </button>
+
+                    <!-- Quote Trigger CTA -->
+                    <button onclick="openQuoteModal()" class="burgundy-gradient hover:opacity-90 text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-lg burgundy-glow transition transform hover:-translate-y-0.5 border border-brand-500/40 flex items-center gap-2">
+                        <i class="fa-solid fa-file-invoice-dollar text-xs"></i>
+                        <span data-i18n="btn_header_quote">طلب تسعير / استشارة</span>
+                    </button>
+                </div>
+
+                <!-- MOBILE HAMBURGER -->
+                <div class="flex lg:hidden items-center gap-3">
+                    <button onclick="toggleLanguage()" class="px-2.5 py-1 rounded-lg border border-gray-700 bg-slateDark-800 text-xs font-bold text-gray-300">
+                        <span id="lang-label-mobile">EN</span>
+                    </button>
+                    <button id="mobile-toggle-btn" class="text-gray-300 hover:text-white text-2xl p-2">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MOBILE MENU OVERLAY -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-slateDark-900 border-b border-gray-800 px-6 py-6 space-y-4">
+            <a href="#home" onclick="toggleMobileMenu()" class="block text-gray-200 font-medium hover:text-brand-500" data-i18n="nav_home">الرئيسية</a>
+            <a href="#solutions" onclick="toggleMobileMenu()" class="block text-gray-200 font-medium hover:text-brand-500" data-i18n="nav_products">حلول IVD</a>
+            <a href="#technology" onclick="toggleMobileMenu()" class="block text-gray-200 font-medium hover:text-brand-500" data-i18n="nav_tech">تقنية M-Chip</a>
+            <a href="#calculator" onclick="toggleMobileMenu()" class="block text-gray-200 font-medium hover:text-brand-500" data-i18n="nav_calc">حاسبة الاستهلاك</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-200 font-medium hover:text-brand-500" data-i18n="nav_about">عن الشركة</a>
+            <a href="#compliance" onclick="toggleMobileMenu()" class="block text-gray-200 font-medium hover:text-brand-500" data-i18n="nav_compliance">الجودة والمعايير</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-gray-200 font-medium hover:text-brand-500" data-i18n="nav_contact">تواصل معنا</a>
+            <button onclick="openQuoteModal(); toggleMobileMenu();" class="w-full burgundy-gradient text-white py-3 rounded-xl font-bold text-sm shadow">
+                <span data-i18n="btn_header_quote">طلب تسعير / استشارة</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH CANVAS MICROFLUIDIC SIMULATION -->
+    <section id="home" class="relative pt-32 pb-24 lg:pt-40 lg:pb-36 overflow-hidden">
+        
+        <!-- Interactive Background Canvas -->
+        <canvas id="fluidCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-40 z-0"></canvas>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- HERO TEXT -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+                    
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-950/80 border border-brand-500/40 text-brand-300 text-xs font-bold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                        <i class="fa-solid fa-microscope text-brand-400"></i>
+                        <span data-i18n="hero_badge">Established 2024 | Advanced Diagnostics Engineering</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+                        <span data-i18n="hero_title_1">جيل أتمتة التشخيص المعملي</span> <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-brand-500 to-rose-300 text-glow" data-i18n="hero_title_2">In-Vitro Diagnostics (IVD)</span> <br>
+                        <span class="text-2xl sm:text-4xl text-gray-300 font-light" data-i18n="hero_title_3">دقة مطلقة وسرعة تشخيصية</span>
+                    </h1>
+
+                    <p class="text-sm sm:text-base text-gray-300 max-w-2xl leading-relaxed mx-auto lg:mx-0" data-i18n="hero_desc">
+                        نحدث نقلة نوعية في معايير المختبرات الطبية عبر توريد وتنسيق أحدث أجهزة تحليل الكيمياء السريرية، المقايسات المناعية (CLIA)، والتشخيص الجزيئي المدعوم برقاقات المائع الدقيق M-Chip متناهية الصغر.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#solutions" class="w-full sm:w-auto text-center burgundy-gradient text-white px-8 py-4 rounded-xl font-bold shadow-xl burgundy-glow hover:opacity-90 transition border border-brand-400/40 flex items-center justify-center gap-3">
+                            <span data-i18n="btn_explore_solutions">استكشف الأنظمة والحلول</span>
+                            <i class="fa-solid fa-arrow-left text-sm transition-transform group-hover:-translate-x-1"></i>
+                        </a>
+                        <button onclick="openQuoteModal('Demo Request')" class="w-full sm:w-auto glass-card hover:bg-slateDark-800 text-white px-8 py-4 rounded-xl font-bold border border-gray-700 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-vial-circle-check text-brand-500"></i>
+                            <span data-i18n="btn_request_demo">طلب العرض التجريبي والكتالوج</span>
+                        </button>
+                    </div>
+
+                    <!-- METRICS GRID -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-gray-800/80 max-w-2xl mx-auto lg:mx-0">
+                        <div class="glass-card p-3 rounded-xl text-center">
+                            <p class="text-2xl sm:text-3xl font-black text-white font-inter">99.9%</p>
+                            <p class="text-[11px] text-gray-400 font-medium" data-i18n="stat_1">دقة الاختبارات</p>
+                        </div>
+                        <div class="glass-card p-3 rounded-xl text-center">
+                            <p class="text-2xl sm:text-3xl font-black text-brand-400 font-inter">50+</p>
+                            <p class="text-[11px] text-gray-400 font-medium" data-i18n="stat_2">حلول وباقات IVD</p>
+                        </div>
+                        <div class="glass-card p-3 rounded-xl text-center">
+                            <p class="text-2xl sm:text-3xl font-black text-white font-inter">ISO 13485</p>
+                            <p class="text-[11px] text-gray-400 font-medium" data-i18n="stat_3">جودة معتمدة</p>
+                        </div>
+                        <div class="glass-card p-3 rounded-xl text-center">
+                            <p class="text-2xl sm:text-3xl font-black text-brand-500 font-inter">10 µL</p>
+                            <p class="text-[11px] text-gray-400 font-medium" data-i18n="stat_4">حجم العينة الأقل</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- HERO VISUAL: INTERACTIVE M-CHIP DIAGRAM -->
+                <div class="lg:col-span-5 relative">
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-brand-500/30 relative shadow-2xl overflow-hidden">
+                        
+                        <!-- Glow Effects -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-brand-500 to-transparent"></div>
+                        
+                        <div class="flex justify-between items-center mb-6 border-b border-gray-800/80 pb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span class="text-xs font-mono text-gray-300">SYSTEM STATUS: ACTIVE</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-brand-400 bg-brand-950 px-2 py-1 rounded border border-brand-800">MICROFLUIDIC M-CHIP v2</span>
+                        </div>
+
+                        <!-- Interactive Droplet Simulator Box -->
+                        <div class="relative bg-slateDark-900 rounded-2xl p-6 border border-slate-800 text-center my-4 overflow-hidden">
+                            <div class="flex flex-col items-center justify-center py-6">
+                                
+                                <div class="w-14 h-14 rounded-full bg-brand-950 border-2 border-brand-500/60 flex items-center justify-center shadow-lg mb-4 relative cursor-pointer group" onclick="triggerDropletAnim()">
+                                    <i class="fa-solid fa-droplet text-brand-500 text-2xl group-hover:scale-125 transition-transform"></i>
+                                    <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-500"></span>
+                                    </span>
+                                </div>
+
+                                <div class="w-full bg-slateDark-950/80 border border-slate-800 rounded-xl p-4 my-2">
+                                    <div class="flex justify-between text-xs text-gray-400 mb-2">
+                                        <span>Sample Fluidic Flow</span>
+                                        <span id="flowRateText" class="text-emerald-400 font-mono">1.2 µL/sec</span>
+                                    </div>
+                                    <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                                        <div id="flowProgressBar" class="bg-gradient-to-r from-brand-600 to-rose-400 h-full w-2/3 transition-all duration-300"></div>
+                                    </div>
+                                </div>
+
+                                <p class="text-xs text-gray-400 mt-2" data-i18n="hero_canvas_hint">
+                                    انقر على القطرة لمحاكاة حركة عينة الدم عبر قنوات M-Chip
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 pt-2 text-xs">
+                            <div class="flex justify-between text-gray-300">
+                                <span>Assay Binding Efficiency</span>
+                                <span class="text-brand-400 font-mono">99.85%</span>
+                            </div>
+                            <div class="flex justify-between text-gray-300">
+                                <span>Detection Sensitivity</span>
+                                <span class="text-brand-400 font-mono">0.01 pg/mL</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS / SOLUTIONS SHOWCASE WITH TABS -->
+    <section id="solutions" class="py-20 relative bg-slateDark-900 border-t border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-500 font-bold text-xs uppercase tracking-widest" data-i18n="solutions_subtitle">كتالوج أجهزة ومحاليل IVD لعام 2024</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2" data-i18n="solutions_title">أنظمة التشخيص المعملي المتكاملة</h2>
+                <p class="text-gray-400 text-sm sm:text-base mt-3" data-i18n="solutions_desc">اختر الفئة المطلوبة للاطلاع على الأجهزة والمجموعات التشخيصية المعتمدة مع إمكانية استعراض المواصفات أو طلب عروض الأسعار.</p>
+            </div>
+
+            <!-- FILTER TABS -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+                <button onclick="filterProducts('all')" class="prod-filter active px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition burgundy-gradient text-white shadow-md border border-brand-500/40" data-category="all" data-i18n="tab_all">الكل</button>
+                <button onclick="filterProducts('immuno')" class="prod-filter px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition glass-card text-gray-300 hover:text-white" data-category="immuno" data-i18n="tab_immuno">المقايسات المناعية CLIA</button>
+                <button onclick="filterProducts('chemistry')" class="prod-filter px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition glass-card text-gray-300 hover:text-white" data-category="chemistry" data-i18n="tab_chem">الكيمياء السريرية</button>
+                <button onclick="filterProducts('molecular')" class="prod-filter px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition glass-card text-gray-300 hover:text-white" data-category="molecular" data-i18n="tab_molec">التشخيص الجزيئي PCR</button>
+                <button onclick="filterProducts('microfluidics')" class="prod-filter px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition glass-card text-gray-300 hover:text-white" data-category="microfluidics" data-i18n="tab_micro">شرائح M-Chip</button>
+                <button onclick="filterProducts('hematology')" class="prod-filter px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition glass-card text-gray-300 hover:text-white" data-category="hematology" data-i18n="tab_hema">أمراض الدم Hematology</button>
+            </div>
+
+            <!-- PRODUCT CARDS CONTAINER -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="products-grid">
+                
+                <!-- Product 1 -->
+                <div class="product-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-cat="immuno">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-brand-950 text-brand-400 border border-brand-800">CLIA Analyzer</span>
+                            <i class="fa-solid fa-heart-pulse text-brand-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">MonoChem CL-2000</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="p1_desc">
+                            محلل المقايسات المناعية بالتألق الكيميائي الآلي بالكامل قدرة 200 اختبار/ساعة مع تحكم حراري آلي.
+                        </p>
+                        <div class="bg-slateDark-950/80 rounded-xl p-3 text-xs space-y-1.5 border border-slate-800 text-gray-300">
+                            <div class="flex justify-between"><span>Throughput:</span> <strong class="text-white">200 T/H</strong></div>
+                            <div class="flex justify-between"><span>First Result:</span> <strong class="text-white">14 mins</strong></div>
+                            <div class="flex justify-between"><span>Assays:</span> <strong class="text-white">Cardiac, Thyroid, Tumors</strong></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slateDark-950 border-t border-gray-800/80 flex items-center justify-between gap-2">
+                        <button onclick="openProductQuickView('MonoChem CL-2000', 'CLIA Fully Automated Immunoassay Analyzer', '200 Tests/Hour', 'Chemiluminescence Microparticle Immunoassay', 'Cardiac Markers, Hormones, Infectious Diseases', '10-20 µL', 'LIS/HIS Bi-directional')" class="text-xs font-bold text-brand-400 hover:text-white transition flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_specs">المواصفات</span>
+                        </button>
+                        <button onclick="openQuoteModal('MonoChem CL-2000')" class="burgundy-gradient text-white text-xs px-4 py-2 rounded-lg font-bold hover:opacity-90 transition">
+                            <span data-i18n="btn_get_quote">طلب سعر</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-cat="microfluidics">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-purple-950 text-purple-400 border border-purple-800">POC Microfluidic</span>
+                            <i class="fa-solid fa-microchip text-purple-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">MonoFluidic M1 Chip System</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="p2_desc">
+                            منظومة المائع الدقيق الذكية لاختبارات نقاط الرعاية الطبية الحادة (POC) بنقطة دم واحدة.
+                        </p>
+                        <div class="bg-slateDark-950/80 rounded-xl p-3 text-xs space-y-1.5 border border-slate-800 text-gray-300">
+                            <div class="flex justify-between"><span>Sample Volume:</span> <strong class="text-white">10 µL Whole Blood</strong></div>
+                            <div class="flex justify-between"><span>Test Time:</span> <strong class="text-white">3-8 mins</strong></div>
+                            <div class="flex justify-between"><span>Portability:</span> <strong class="text-white">Battery Powered (2.4kg)</strong></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slateDark-950 border-t border-gray-800/80 flex items-center justify-between gap-2">
+                        <button onclick="openProductQuickView('MonoFluidic M1 Chip System', 'Microfluidic Point-of-Care Cartridge System', '12 Tests/Batch', 'Lab-on-a-Chip Optical & Electrochemical', 'Sepsis, Blood Gas, Electrolytes', '10 µL', 'Integrated Thermal Printer & WiFi')" class="text-xs font-bold text-brand-400 hover:text-white transition flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_specs">المواصفات</span>
+                        </button>
+                        <button onclick="openQuoteModal('MonoFluidic M1 Chip System')" class="burgundy-gradient text-white text-xs px-4 py-2 rounded-lg font-bold hover:opacity-90 transition">
+                            <span data-i18n="btn_get_quote">طلب سعر</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-cat="chemistry">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-950 text-amber-400 border border-amber-800">Clinical Chemistry</span>
+                            <i class="fa-solid fa-flask-vial text-amber-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">MonoAuto Chem 400</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="p3_desc">
+                            محلل الكيمياء السريرية التلقائي عالي السرعة مع محطة غسيل مدمجة مكوّنة من 8 خطوات.
+                        </p>
+                        <div class="bg-slateDark-950/80 rounded-xl p-3 text-xs space-y-1.5 border border-slate-800 text-gray-300">
+                            <div class="flex justify-between"><span>Speed:</span> <strong class="text-white">400 Tests/Hour</strong></div>
+                            <div class="flex justify-between"><span>Reagent Tray:</span> <strong class="text-white">80 Refrigerated Positions</strong></div>
+                            <div class="flex justify-between"><span>Wavelengths:</span> <strong class="text-white">12 Grating Filters</strong></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slateDark-950 border-t border-gray-800/80 flex items-center justify-between gap-2">
+                        <button onclick="openProductQuickView('MonoAuto Chem 400', 'Automated Clinical Chemistry Analyzer', '400 Constant T/H', 'Photometry & Turbidimetry', 'Liver/Kidney Panels, Lipids, Glycated Proteins', '2-35 µL', 'Bi-directional LIS')" class="text-xs font-bold text-brand-400 hover:text-white transition flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_specs">المواصفات</span>
+                        </button>
+                        <button onclick="openQuoteModal('MonoAuto Chem 400')" class="burgundy-gradient text-white text-xs px-4 py-2 rounded-lg font-bold hover:opacity-90 transition">
+                            <span data-i18n="btn_get_quote">طلب سعر</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-cat="molecular">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-blue-950 text-blue-400 border border-blue-800">Real-Time PCR</span>
+                            <i class="fa-solid fa-dna text-blue-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">MonoGene PCR 96</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="p4_desc">
+                            نظام PCR المباشر الكمّي بستة قنوات كشف فلوريسنت وتجانس حراري فائق الموثوقية.
+                        </p>
+                        <div class="bg-slateDark-950/80 rounded-xl p-3 text-xs space-y-1.5 border border-slate-800 text-gray-300">
+                            <div class="flex justify-between"><span>Sample Capacity:</span> <strong class="text-white">96 Wells x 0.2ml</strong></div>
+                            <div class="flex justify-between"><span>Detection Channels:</span> <strong class="text-white">6 Multiplex Channels</strong></div>
+                            <div class="flex justify-between"><span>Ramp Rate:</span> <strong class="text-white">up to 6.0 °C/sec</strong></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slateDark-950 border-t border-gray-800/80 flex items-center justify-between gap-2">
+                        <button onclick="openProductQuickView('MonoGene PCR 96', 'Real-time Quantitative PCR System', '96 samples/run', 'Fluorescence Optics', 'Infectious Pathogens, Genetic Testing', '10-50 µL', 'USB, Ethernet, Cloud Export')" class="text-xs font-bold text-brand-400 hover:text-white transition flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_specs">المواصفات</span>
+                        </button>
+                        <button onclick="openQuoteModal('MonoGene PCR 96')" class="burgundy-gradient text-white text-xs px-4 py-2 rounded-lg font-bold hover:opacity-90 transition">
+                            <span data-i18n="btn_get_quote">طلب سعر</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-cat="hematology">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-rose-950 text-rose-400 border border-rose-800">5-Part Hematology</span>
+                            <i class="fa-solid fa-vials text-rose-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">MonoCount H50 Auto</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="p5_desc">
+                            جهاز عد كرات الدم الخماسي (5-Part Differential) بتقنية المشتت الليزري والصبغة الفلوريسنتية.
+                        </p>
+                        <div class="bg-slateDark-950/80 rounded-xl p-3 text-xs space-y-1.5 border border-slate-800 text-gray-300">
+                            <div class="flex justify-between"><span>Throughput:</span> <strong class="text-white">60 Samples/Hour</strong></div>
+                            <div class="flex justify-between"><span>Parameters:</span> <strong class="text-white">29 Reportable Parameters</strong></div>
+                            <div class="flex justify-between"><span>Aspiration:</span> <strong class="text-white">15 µL Whole Blood</strong></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slateDark-950 border-t border-gray-800/80 flex items-center justify-between gap-2">
+                        <button onclick="openProductQuickView('MonoCount H50 Auto', '5-Part Automated Hematology Analyzer', '60 Tests/Hour', 'Tri-angle Laser Scatter + Cytometry', 'CBC + 5 Diff + Reticulocyte', '15 µL', 'Barcode Reader & Touchscreen')" class="text-xs font-bold text-brand-400 hover:text-white transition flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_specs">المواصفات</span>
+                        </button>
+                        <button onclick="openQuoteModal('MonoCount H50 Auto')" class="burgundy-gradient text-white text-xs px-4 py-2 rounded-lg font-bold hover:opacity-90 transition">
+                            <span data-i18n="btn_get_quote">طلب سعر</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-cat="immuno">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-brand-950 text-brand-400 border border-brand-800">Assay Kits</span>
+                            <i class="fa-solid fa-boxes-packing text-brand-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">High-Sensitivity Reagents</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="p6_desc">
+                            محاليل وكواشف إيمونية وكيميائية فائقة النقاء والحساسية متوافقة مع الأجهزة المغلقة والمفتوحة.
+                        </p>
+                        <div class="bg-slateDark-950/80 rounded-xl p-3 text-xs space-y-1.5 border border-slate-800 text-gray-300">
+                            <div class="flex justify-between"><span>Shelf Life:</span> <strong class="text-white">18-24 Months</strong></div>
+                            <div class="flex justify-between"><span>Calibration Stability:</span> <strong class="text-white">Up to 28 Days</strong></div>
+                            <div class="flex justify-between"><span>Certification:</span> <strong class="text-white">CE-IVD & ISO 13485</strong></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slateDark-950 border-t border-gray-800/80 flex items-center justify-between gap-2">
+                        <button onclick="openProductQuickView('High-Sensitivity IVD Reagents', 'Ready-to-use Liquid IVD Reagent Kits', 'Multi-pack Sizes', 'Enzymatic & Immuno-binding', 'Cardiac Troponin I, NT-proBNP, PCT', 'N/A', 'Barcoded Bottles')" class="text-xs font-bold text-brand-400 hover:text-white transition flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_specs">المواصفات</span>
+                        </button>
+                        <button onclick="openQuoteModal('IVD Reagent Kits')" class="burgundy-gradient text-white text-xs px-4 py-2 rounded-lg font-bold hover:opacity-90 transition">
+                            <span data-i18n="btn_get_quote">طلب سعر</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TECHNOLOGY & INNOVATION (M-CHIP MICROFLUIDICS INTERACTIVE DIAGRAM) -->
+    <section id="technology" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-brand-500/30 relative overflow-hidden">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-brand-500 font-bold text-xs uppercase tracking-widest" data-i18n="tech_sub">الهندسة الميكرونية لموائع التشخيص</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2" data-i18n="tech_title">تكنولوجيا M-Chip Microfluidic Cartridges</h2>
+                    <p class="text-gray-300 text-sm sm:text-base mt-2" data-i18n="tech_desc">تتيح تقنيتنا التحكم الكامل بسريان ميكرولترات السائل الحيوي داخل قنوات مجهرية لإتمام أربعة مراحل تشخيصية في دقائق.</p>
+                </div>
+
+                <!-- INTERACTIVE STEP PROCESS SIMULATOR -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                    
+                    <!-- Step 1 -->
+                    <div class="glass-card p-5 rounded-2xl border-brand-500/20 text-center relative hover:border-brand-500 transition group cursor-pointer" onclick="setActiveChipStep(1)">
+                        <div class="w-12 h-12 rounded-xl bg-brand-950 border border-brand-800 text-brand-400 flex items-center justify-center font-bold text-lg mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            01
+                        </div>
+                        <h4 class="text-white font-bold text-base mb-2" data-i18n="step1_title">إدخال العينة Micro-Sample</h4>
+                        <p class="text-xs text-gray-400" data-i18n="step1_desc">حقن 10µL فقط من الدم الكامل دون الحاجة لمعالجة سابقة أو فصل مطوّل.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="glass-card p-5 rounded-2xl border-brand-500/20 text-center relative hover:border-brand-500 transition group cursor-pointer" onclick="setActiveChipStep(2)">
+                        <div class="w-12 h-12 rounded-xl bg-brand-950 border border-brand-800 text-brand-400 flex items-center justify-center font-bold text-lg mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            02
+                        </div>
+                        <h4 class="text-white font-bold text-base mb-2" data-i18n="step2_title">الدمج والخلط المجهري</h4>
+                        <p class="text-xs text-gray-400" data-i18n="step2_desc">مزج العينة بإنزيمات ومحاليل التفاعل المبرمجة داخل القنوات الحلزونية.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="glass-card p-5 rounded-2xl border-brand-500/20 text-center relative hover:border-brand-500 transition group cursor-pointer" onclick="setActiveChipStep(3)">
+                        <div class="w-12 h-12 rounded-xl bg-brand-950 border border-brand-800 text-brand-400 flex items-center justify-center font-bold text-lg mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            03
+                        </div>
+                        <h4 class="text-white font-bold text-base mb-2" data-i18n="step3_title">الارتباط المغناطيسي Bead Binding</h4>
+                        <p class="text-xs text-gray-400" data-i18n="step3_desc">التقاط الجزيئات المستهدفة عبر جسيمات نانوية مغناطيسية عالية التخصص.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="glass-card p-5 rounded-2xl border-brand-500/20 text-center relative hover:border-brand-500 transition group cursor-pointer" onclick="setActiveChipStep(4)">
+                        <div class="w-12 h-12 rounded-xl bg-brand-950 border border-brand-800 text-brand-400 flex items-center justify-center font-bold text-lg mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            04
+                        </div>
+                        <h4 class="text-white font-bold text-base mb-2" data-i18n="step4_title">الكشف البصري الفلوري</h4>
+                        <p class="text-xs text-gray-400" data-i18n="step4_desc">قراءة الضوء المنبعث بدقة أجزاء من البيكوغرام في المليلتر وإخراج النتيجة.</p>
+                    </div>
+
+                </div>
+
+                <!-- SIMULATION STATUS DISPLAY PANEL -->
+                <div class="mt-8 bg-slateDark-950 rounded-2xl p-6 border border-gray-800 text-center">
+                    <div id="stepDetailDisplay" class="text-sm font-semibold text-brand-300">
+                        <i class="fa-solid fa-circle-info text-brand-500 mr-2"></i>
+                        <span data-i18n="tech_step_prompt">انقر على أي خطوة من الخطوات السابقة لعرض آلية العمل التفصيلية لشريحة M-Chip</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE IVD CONSUMPTION & SAVINGS CALCULATOR -->
+    <section id="calculator" class="py-20 bg-slateDark-900 border-t border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Calculator Controls -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div>
+                        <span class="text-brand-500 font-bold text-xs uppercase tracking-widest" data-i18n="calc_sub">أداة التخطيط المالي للمختبرات</span>
+                        <h2 class="text-3xl font-extrabold text-white mt-1" data-i18n="calc_title">حاسبة تقدير استهلاك المحاليل والوفر</h2>
+                        <p class="text-gray-400 text-sm mt-2" data-i18n="calc_desc">قم بإدخال متوسط عدد الفحوصات اليومية في مختبرك لمعرفة مدى تقليل هدر المحاليل والتكلفة التقديرية المتوقعة عند التحول لأنظمة Mono Chrome.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl space-y-5 border-gray-800">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-gray-300 mb-2">
+                                <span data-i18n="lbl_daily_tests">عدد الفحوصات اليومية:</span>
+                                <span id="testsVal" class="text-brand-400 font-mono text-sm">250 فحص/يوم</span>
+                            </div>
+                            <input type="range" id="testsSlider" min="50" max="2000" step="50" value="250" oninput="calculateIVDSavings()" class="w-full accent-brand-500 bg-slateDark-950 h-2 rounded-lg cursor-pointer">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 mb-2" data-i18n="lbl_analyzer_type">نوع النظام المطلوب:</label>
+                            <select id="analyzerSelect" onchange="calculateIVDSavings()" class="w-full bg-slateDark-950 border border-gray-700 rounded-xl px-4 py-2.5 text-xs text-white focus:border-brand-500 focus:outline-none">
+                                <option value="chem">الكيمياء السريرية الآلية (Clinical Chemistry)</option>
+                                <option value="clia">المقايسات المناعية التلقائية (CLIA)</option>
+                                <option value="micro">منظومة شرائح المائع الدقيق (M-Chip POC)</option>
+                                <option value="pcr">التشخيص الجزيئي (Real-Time PCR)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Output Cards -->
+                <div class="lg:col-span-6">
+                    <div class="glass-panel p-8 rounded-3xl border border-brand-500/30 space-y-6 text-center">
+                        <h3 class="text-lg font-bold text-white border-b border-gray-800 pb-3" data-i18n="calc_results_head">نتائج التقدير السنوي المتوقع</h3>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slateDark-950 p-4 rounded-2xl border border-slate-800">
+                                <p class="text-xs text-gray-400" data-i18n="calc_reagent_vol">حجم المحاليل المحفوظة سنوياً</p>
+                                <p id="savedReagentVol" class="text-2xl font-black text-emerald-400 mt-1 font-mono">187.5 L</p>
+                            </div>
+                            <div class="bg-slateDark-950 p-4 rounded-2xl border border-slate-800">
+                                <p class="text-xs text-gray-400" data-i18n="calc_time_saved">الساعات المختصرة للنتائج</p>
+                                <p id="savedHours" class="text-2xl font-black text-brand-400 mt-1 font-mono">912 ساعة</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-brand-950/80 p-6 rounded-2xl border border-brand-800">
+                            <p class="text-xs text-gray-300 uppercase tracking-widest" data-i18n="calc_cost_sav">نسبة التوفير التقديرية في التكاليف التشغيلية</p>
+                            <p id="estimatedSavingsCost" class="text-3xl sm:text-4xl font-black text-white mt-2 font-mono">$18,750 / سنة</p>
+                        </div>
+
+                        <button onclick="openQuoteModal('Custom Lab Calculation Request')" class="w-full burgundy-gradient text-white py-3.5 rounded-xl font-bold text-xs shadow-lg hover:opacity-90 transition">
+                            <span data-i18n="btn_calc_quote">طلب دراسة جدوى وتوريد مخصصة لمختبرك</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-500 font-bold text-xs uppercase tracking-widest" data-i18n="about_tag">نبذة عن التأسيس والرؤية</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight" data-i18n="about_title">ريادة التشخيصات المخبرية منذ 2024</h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed" data-i18n="about_p1">
+                        تأسست شركة **Mono Chrome for IVD Solutions** في عام 2024 للارتقاء بمعايير التشخيص الطبي في الشرق الأوسط وأفريقيا. نجمع بين الأجهزة المتطورة، الكواشف المستقرة، وأنظمة الذكاء الاصطناعي التشخيصية لتوفير دقة استثنائية.
+                    </p>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed" data-i18n="about_p2">
+                        يمتد التزامنا من تقديم أجهزة أتمتة الكيمياء والمناعة المعتمدة إلى إنشاء منظومات صيانة متكاملة وتوفير الدعم الفني والإسناد العلمي لجميع أطباء المعامل والمراكز التشخيصية.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-center gap-3 glass-card p-3 rounded-xl border-gray-800">
+                            <i class="fa-solid fa-shield-virus text-brand-500 text-2xl"></i>
+                            <div>
+                                <h4 class="text-white text-xs font-bold" data-i18n="about_feat1">أعلى درجات الأمان</h4>
+                                <p class="text-[10px] text-gray-400" data-i18n="about_feat1_sub">مطابقة المعايير الطبية الدولية</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 glass-card p-3 rounded-xl border-gray-800">
+                            <i class="fa-solid fa-headset text-brand-500 text-2xl"></i>
+                            <div>
+                                <h4 class="text-white text-xs font-bold" data-i18n="about_feat2">دعم فني 24/7</h4>
+                                <p class="text-[10px] text-gray-400" data-i18n="about_feat2_sub">فريق مهندسين طبيين متوفر دائماً</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-800 space-y-6">
+                        <h3 class="text-xl font-bold text-white border-b border-gray-800 pb-3" data-i18n="about_pillars">ركائزنا التشغيلية الأساسية</h3>
+
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl bg-slateDark-950 border border-gray-800 flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-brand-950 text-brand-400 flex items-center justify-center font-bold shrink-0">01</div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm" data-i18n="pil_1_title">الابتكار التكنولوجي المستمر</h4>
+                                    <p class="text-xs text-gray-400 mt-1" data-i18n="pil_1_desc">دمج شريحة المائع الدقيق بالأتمتة الكاملة للحد من التدخل البشري.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slateDark-950 border border-gray-800 flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-brand-950 text-brand-400 flex items-center justify-center font-bold shrink-0">02</div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm" data-i18n="pil_2_title">استدامة سلاسل التوريد للمحاليل</h4>
+                                    <p class="text-xs text-gray-400 mt-1" data-i18n="pil_2_desc">ضمان توافر الكواشف التشخيصية والمحاليل بدون انقطاع للمستشفيات.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slateDark-950 border border-gray-800 flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-brand-950 text-brand-400 flex items-center justify-center font-bold shrink-0">03</div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm" data-i18n="pil_3_title">المعايرة المعتمدة للجودة</h4>
+                                    <p class="text-xs text-gray-400 mt-1" data-i18n="pil_3_desc">معايرة أجهزة القياس بدقة قياسية عبر بروتوكولات الكنترول الدورية.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- QUALITY & COMPLIANCE BADGES -->
+    <section id="compliance" class="py-16 bg-slateDark-900 border-t border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <span class="text-brand-500 font-bold text-xs uppercase tracking-widest" data-i18n="qual_tag">الشهادات والاعتمادات الرسمية</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-10" data-i18n="qual_title">مطابقة لأرقى المعايير الطبية الدولية</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-2xl border-gray-800">
+                    <i class="fa-solid fa-certificate text-brand-500 text-3xl mb-3"></i>
+                    <h4 class="text-white font-bold text-sm">ISO 13485:2016</h4>
+                    <p class="text-xs text-gray-400 mt-1" data-i18n="cert_1">نظام إدارة جودة الأجهزة الطبية</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl border-gray-800">
+                    <i class="fa-solid fa-stamp text-brand-500 text-3xl mb-3"></i>
+                    <h4 class="text-white font-bold text-sm">CE-IVD Marking</h4>
+                    <p class="text-xs text-gray-400 mt-1" data-i18n="cert_2">علامة المطابقة الأوروبية للتشخيص المخبري</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl border-gray-800">
+                    <i class="fa-solid fa-award text-brand-500 text-3xl mb-3"></i>
+                    <h4 class="text-white font-bold text-sm">GMP Compliance</h4>
+                    <p class="text-xs text-gray-400 mt-1" data-i18n="cert_3">الممارسات التصنيعية الجيدة للمحاليل</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl border-gray-800">
+                    <i class="fa-solid fa-clipboard-check text-brand-500 text-3xl mb-3"></i>
+                    <h4 class="text-white font-bold text-sm">ISO 9001:2015</h4>
+                    <p class="text-xs text-gray-400 mt-1" data-i18n="cert_4">إدارة الجودة الشاملة للخدمات والتدريب</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT & INQUIRY SECTION -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-brand-500 font-bold text-xs uppercase tracking-widest" data-i18n="contact_sub">تواصل مع قسم المبيعات والدعم</span>
+                        <h2 class="text-3xl font-extrabold text-white mt-1" data-i18n="contact_title">ارتقِ بمستوى مختبرك اليوم</h2>
+                        <p class="text-gray-400 text-sm mt-3" data-i18n="contact_desc">تواصل معنا للحصول على الاستشارات الفنية، عروض الأسعار المخصصة، أو طلب زيارة مهندس متخصص لمعاينـة مختبرك.</p>
+                    </div>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="glass-card p-4 rounded-xl flex items-center gap-4 border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-950 text-brand-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-xs font-bold" data-i18n="c_addr_head">المقر الرئيسي</h4>
+                                <p class="text-gray-300 text-xs">مجمع التقنيات الطبية، القاهرة / الشرق الأوسط</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl flex items-center gap-4 border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-950 text-brand-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-xs font-bold" data-i18n="c_email_head">البريد الإلكتروني المباشر</h4>
+                                <p class="text-gray-300 text-xs font-mono">info@monochrome-ivd.com</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl flex items-center gap-4 border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-950 text-brand-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-xs font-bold" data-i18n="c_phone_head">الهاتف والدعم الفني</h4>
+                                <p class="text-gray-300 text-xs font-mono" dir="ltr">+20 (2) 2345 6789 / +20 100 000 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="lg:col-span-7">
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-800">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-brand-500"></i>
+                            <span data-i18n="form_head">نموذج الاستفسار والتجهيز المعملي</span>
+                        </h3>
+
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-300 mb-1" data-i18n="f_name">الاسم الثلاثي *</label>
+                                    <input type="text" required class="w-full bg-slateDark-950 border border-gray-700 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-500 focus:outline-none" placeholder="د. أحمد محمود">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-300 mb-1" data-i18n="f_lab">اسم المختبر / المستشفى *</label>
+                                    <input type="text" required class="w-full bg-slateDark-950 border border-gray-700 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-500 focus:outline-none" placeholder="مختبرات النخبة الطبية">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-300 mb-1" data-i18n="f_email">البريد الإلكتروني *</label>
+                                    <input type="email" required class="w-full bg-slateDark-950 border border-gray-700 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-500 focus:outline-none" placeholder="doctor@lab.com">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-300 mb-1" data-i18n="f_phone">رقم الهاتف / الواتساب *</label>
+                                    <input type="tel" required class="w-full bg-slateDark-950 border border-gray-700 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-500 focus:outline-none" placeholder="+20 10 ...">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 mb-1" data-i18n="f_interest">فئة الحلول المطلوبة</label>
+                                <select class="w-full bg-slateDark-950 border border-gray-700 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-500 focus:outline-none">
+                                    <option>أجهزة المقايسات المناعية CLIA</option>
+                                    <option>أجهزة الكيمياء السريرية الآلية</option>
+                                    <option>منظومة المائع الدقيق M-Chip POC</option>
+                                    <option>التشخيص الجزيئي Real-Time PCR</option>
+                                    <option>توريد المحاليل والكواشف الطبية</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 mb-1" data-i18n="f_msg">تفاصيل الاحتياج المعملي</label>
+                                <textarea rows="4" required class="w-full bg-slateDark-950 border border-gray-700 rounded-xl px-4 py-3 text-xs text-white focus:border-brand-500 focus:outline-none" placeholder="اكتب الاستفسار أو الأجهزة المراد استبدالها وتجهيزها..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full burgundy-gradient text-white font-bold py-3.5 rounded-xl hover:opacity-90 transition shadow-lg border border-brand-500/40">
+                                <span data-i18n="btn_send_form">إرسال الطلب إلى فريق MONO CHROME</span>
+                            </button>
+                        </form>
+
+                        <div id="contactSuccessMsg" class="hidden mt-4 p-4 rounded-xl bg-emerald-950/90 border border-emerald-800 text-emerald-300 text-xs text-center">
+                            <i class="fa-solid fa-circle-check text-base mb-1 block"></i>
+                            تم استلام طلبك بنجاح! سيتم التواصل مع سيادتكم عبر مسئول المبيعات الفنية خلال ساعات.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slateDark-950 border-t border-gray-800 text-gray-400 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+                
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg burgundy-gradient flex items-center justify-center text-white font-bold text-xs">MC</div>
+                        <span class="text-lg font-black text-white font-inter">MONO CHROME</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed" data-i18n="foot_about">
+                        الشركة المتخصصة في تقديم أحدث حلول التشخيص المخبري الخارجي (In-Vitro Diagnostics)، الأتمتة الكاملة، وشرائح المائع الدقيق لعام 2024 وما بعده.
+                    </p>
+                    <div class="text-[11px] font-mono text-brand-400">Established 2024 | Advanced Diagnostics</div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4" data-i18n="foot_links">روابط الوصول السريع</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-brand-500 transition">الرئيسية</a></li>
+                        <li><a href="#solutions" class="hover:text-brand-500 transition">حلول IVD</a></li>
+                        <li><a href="#technology" class="hover:text-brand-500 transition">تقنية M-Chip</a></li>
+                        <li><a href="#calculator" class="hover:text-brand-500 transition">حاسبة الاستهلاك</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4" data-i18n="foot_prods">فئات المنتجات</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#solutions" class="hover:text-brand-500 transition">CLIA Immunoassay Analyzers</a></li>
+                        <li><a href="#solutions" class="hover:text-brand-500 transition">Clinical Chemistry Systems</a></li>
+                        <li><a href="#solutions" class="hover:text-brand-500 transition">Microfluidic POC Cartridges</a></li>
+                        <li><a href="#solutions" class="hover:text-brand-500 transition">Real-Time PCR Systems</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4" data-i18n="foot_news">النشرة الطبية الفنية</h4>
+                    <p class="text-xs text-gray-400 mb-3" data-i18n="foot_news_sub">اشترك للحصول على أحدث الكتلوجات والأبحاث التشخيصية لعام 2024.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="البريد الإلكتروني" class="bg-slateDark-900 border border-gray-700 rounded-r-xl px-3 py-2 text-xs text-white focus:outline-none w-full">
+                        <button class="burgundy-gradient text-white px-4 py-2 rounded-l-xl text-xs font-bold hover:opacity-90">اشترك</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>© 2024 MONO CHROME FOR IVD SOLUTIONS. All Rights Reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-gray-300"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                    <a href="#" class="hover:text-gray-300"><i class="fa-brands fa-facebook text-lg"></i></a>
+                    <a href="#" class="hover:text-gray-300"><i class="fa-brands fa-x-twitter text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PRODUCT QUICK SPECS MODAL -->
+    <div id="quickViewModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel max-w-xl w-full rounded-3xl p-6 border border-brand-500/40 relative animate-fade-in max-h-[90vh] overflow-y-auto">
+            <button onclick="closeQuickViewModal()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-brand-500 text-xs font-bold uppercase mb-1">MONO CHROME TECHNICAL SPECIFICATIONS</div>
+            <h3 id="qvTitle" class="text-2xl font-bold text-white mb-1">Product Title</h3>
+            <p id="qvCategory" class="text-xs text-gray-400 mb-6">Product Category</p>
+
+            <div class="space-y-3 border-t border-b border-gray-800 py-4 my-4 text-xs">
+                <div class="flex justify-between py-1 border-b border-gray-800/50">
+                    <span class="text-gray-400">Throughput / Speed:</span>
+                    <strong id="qvSpeed" class="text-white">--</strong>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-800/50">
+                    <span class="text-gray-400">Methodology:</span>
+                    <strong id="qvMethod" class="text-white">--</strong>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-800/50">
+                    <span class="text-gray-400">Assay Menu:</span>
+                    <strong id="qvMenu" class="text-white">--</strong>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-800/50">
+                    <span class="text-gray-400">Sample Volume Required:</span>
+                    <strong id="qvVolume" class="text-white">--</strong>
+                </div>
+                <div class="flex justify-between py-1">
+                    <span class="text-gray-400">Connectivity:</span>
+                    <strong id="qvConnectivity" class="text-white">--</strong>
+                </div>
+            </div>
+
+            <div class="flex gap-3 pt-2">
+                <button onclick="closeQuickViewModal(); openQuoteModal();" class="w-full burgundy-gradient text-white py-3 rounded-xl font-bold text-xs shadow-lg">
+                    طلب تسعير لهذا الجهاز
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- REQUEST QUOTE MODAL -->
+    <div id="quoteModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel max-w-md w-full rounded-3xl p-6 border border-brand-500/40 relative">
+            <button onclick="closeQuoteModal()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <h3 class="text-xl font-bold text-white mb-1" data-i18n="btn_header_quote">طلب تسعير / استشارة</h3>
+            <p class="text-xs text-gray-400 mb-4" id="quoteModalSub">يرجى ملء البيانات لتزويد مختبرك بالكتالوج والعرض المالي.</p>
+
+            <form onsubmit="handleQuoteSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-300 mb-1">الاسم / اسم المنشأة *</label>
+                    <input type="text" required class="w-full bg-slateDark-950 border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-300 mb-1">رقم الهاتف / الواتساب *</label>
+                    <input type="tel" required class="w-full bg-slateDark-950 border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-300 mb-1">المنتج المطلوب</label>
+                    <input type="text" id="quoteProductTarget" readonly class="w-full bg-slateDark-900 border border-gray-800 rounded-xl px-3 py-2 text-xs text-brand-300 font-bold">
+                </div>
+                <button type="submit" class="w-full burgundy-gradient text-white font-bold py-3 rounded-xl text-xs mt-2 shadow">
+                    تأكيد وإرسال الطلب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Language Dictionary
+        const translations = {
+            ar: {
+                nav_home: "الرئيسية",
+                nav_products: "حلول IVD",
+                nav_tech: "تقنية M-Chip",
+                nav_calc: "حاسبة الاستهلاك",
+                nav_about: "عن الشركة",
+                nav_compliance: "الجودة والمعايير",
+                nav_contact: "تواصل معنا",
+                btn_header_quote: "طلب تسعير / استشارة",
+                hero_badge: "تأسست 2024 | هندسة التشخيصات المتقدمة",
+                hero_title_1: "جيل أتمتة التشخيص المعملي",
+                hero_title_2: "In-Vitro Diagnostics (IVD)",
+                hero_title_3: "دقة مطلقة وسرعة تشخيصية",
+                hero_desc: "نحدث نقلة نوعية في معايير المختبرات الطبية عبر توريد وتنسيق أحدث أجهزة تحليل الكيمياء السريرية، المقايسات المناعية (CLIA)، والتشخيص الجزيئي المدعوم برقاقات المائع الدقيق M-Chip متناهية الصغر.",
+                btn_explore_solutions: "استكشف الأنظمة والحلول",
+                btn_request_demo: "طلب العرض التجريبي والكتالوج",
+                stat_1: "دقة الاختبارات",
+                stat_2: "حلول وباقات IVD",
+                stat_3: "جودة معتمدة",
+                stat_4: "حجم العينة الأقل",
+                hero_canvas_hint: "انقر على القطرة لمحاكاة حركة عينة الدم عبر قنوات M-Chip",
+                solutions_subtitle: "كتالوج أجهزة ومحاليل IVD لعام 2024",
+                solutions_title: "أنظمة التشخيص المعملي المتكاملة",
+                solutions_desc: "اختر الفئة المطلوبة للاطلاع على الأجهزة والمجموعات التشخيصية المعتمدة مع إمكانية استعراض المواصفات أو طلب عروض الأسعار.",
+                tab_all: "الكل",
+                tab_immuno: "المقايسات المناعية CLIA",
+                tab_chem: "الكيمياء السريرية",
+                tab_molec: "التشخيص الجزيئي PCR",
+                tab_micro: "شرائح M-Chip",
+                tab_hema: "أمراض الدم Hematology",
+                btn_specs: "المواصفات",
+                btn_get_quote: "طلب سعر",
+                tech_sub: "الهندسة الميكرونية لموائع التشخيص",
+                tech_title: "تكنولوجيا M-Chip Microfluidic Cartridges",
+                tech_desc: "تتيح تقنيتنا التحكم الكامل بسريان ميكرولترات السائل الحيوي داخل قنوات مجهرية لإتمام أربعة مراحل تشخيصية في دقائق.",
+                step1_title: "إدخال العينة Micro-Sample",
+                step1_desc: "حقن 10µL فقط من الدم الكامل دون الحاجة لمعالجة سابقة أو فصل مطوّل.",
+                step2_title: "الدمج والخلط المجهري",
+                step2_desc: "مزج العينة بإنزيمات ومحاليل التفاعل المبرمجة داخل القنوات الحلزونية.",
+                step3_title: "الارتباط المغناطيسي Bead Binding",
+                step3_desc: "التقاط الجزيئات المستهدفة عبر جسيمات نانوية مغناطيسية عالية التخصص.",
+                step4_title: "الكشف البصري الفلوري",
+                step4_desc: "قراءة الضوء المنبعث بدقة أجزاء من البيكوغرام في المليلتر وإخراج النتيجة.",
+                tech_step_prompt: "انقر على أي خطوة من الخطوات السابقة لعرض آلية العمل التفصيلية لشريحة M-Chip",
+                calc_sub: "أداة التخطيط المالي للمختبرات",
+                calc_title: "حاسبة تقدير استهلاك المحاليل والوفر",
+                calc_desc: "قم بإدخال متوسط عدد الفحوصات اليومية في مختبرك لمعرفة مدى تقليل هدر المحاليل والتكلفة التقديرية المتوقعة عند التحول لأنظمة Mono Chrome.",
+                lbl_daily_tests: "عدد الفحوصات اليومية:",
+                lbl_analyzer_type: "نوع النظام المطلوب:",
+                calc_results_head: "نتائج التقدير السنوي المتوقع",
+                calc_reagent_vol: "حجم المحاليل المحفوظة سنوياً",
+                calc_time_saved: "الساعات المختصرة للنتائج",
+                calc_cost_sav: "نسبة التوفير التقديرية في التكاليف التشغيلية",
+                btn_calc_quote: "طلب دراسة جدوى وتوريد مخصصة لمختبرك",
+                about_tag: "نبذة عن التأسيس والرؤية",
+                about_title: "ريادة التشخيصات المخبرية منذ 2024",
+                about_p1: "تأسست شركة Mono Chrome for IVD Solutions في عام 2024 للارتقاء بمعايير التشخيص الطبي في الشرق الأوسط وأفريقيا. نجمع بين الأجهزة المتطورة، الكواشف المستقرة، وأنظمة الذكاء الاصطناعي التشخيصية لتوفير دقة استثنائية.",
+                about_p2: "يمتد التزامنا من تقديم أجهزة أتمتة الكيمياء والمناعة المعتمدة إلى إنشاء منظومات صيانة متكاملة وتوفير الدعم الفني والإسناد العلمي لجميع أطباء المعامل والمراكز التشخيصية.",
+                about_feat1: "أعلى درجات الأمان",
+                about_feat1_sub: "مطابقة المعايير الطبية الدولية",
+                about_feat2: "دعم فني 24/7",
+                about_feat2_sub: "فريق مهندسين طبيين متوفر دائماً",
+                about_pillars: "ركائزنا التشغيلية الأساسية",
+                pil_1_title: "الابتكار التكنولوجي المستمر",
+                pil_1_desc: "دمج شريحة المائع الدقيق بالأتمتة الكاملة للحد من التدخل البشري.",
+                pil_2_title: "استدامة سلاسل التوريد للمحاليل",
+                pil_2_desc: "ضمان توافر الكواشف التشخيصية والمحاليل بدون انقطاع للمستشفيات.",
+                pil_3_title: "المعايرة المعتمدة للجودة",
+                pil_3_desc: "معايرة أجهزة القياس بدقة قياسية عبر بروتوكولات الكنترول الدورية.",
+                qual_tag: "الشهادات والاعتمادات الرسمية",
+                qual_title: "مطابقة لأرقى المعايير الطبية الدولية",
+                cert_1: "نظام إدارة جودة الأجهزة الطبية",
+                cert_2: "علامة المطابقة الأوروبية للتشخيص المخبري",
+                cert_3: "الممارسات التصنيعية الجيدة للمحاليل",
+                cert_4: "إدارة الجودة الشاملة للخدمات والتدريب",
+                contact_sub: "تواصل مع قسم المبيعات والدعم",
+                contact_title: "ارتقِ بمستوى مختبرك اليوم",
+                contact_desc: "تواصل معنا للحصول على الاستشارات الفنية، عروض الأسعار المخصصة، أو طلب زيارة مهندس متخصص لمعاينـة مختبرك.",
+                c_addr_head: "المقر الرئيسي",
+                c_email_head: "البريد الإلكتروني المباشر",
+                c_phone_head: "الهاتف والدعم الفني",
+                form_head: "نموذج الاستفسار والتجهيز المعملي",
+                f_name: "الاسم الثلاثي *",
+                f_lab: "اسم المختبر / المستشفى *",
+                f_email: "البريد الإلكتروني *",
+                f_phone: "رقم الهاتف / الواتساب *",
+                f_interest: "فئة الحلول المطلوبة",
+                f_msg: "تفاصيل الاحتياج المعملي",
+                btn_send_form: "إرسال الطلب إلى فريق MONO CHROME",
+                foot_about: "الشركة المتخصصة في تقديم أحدث حلول التشخيص المخبري الخارجي (In-Vitro Diagnostics)، الأتمتة الكاملة، وشرائح المائع الدقيق لعام 2024 وما بعده.",
+                foot_links: "روابط الوصول السريع",
+                foot_prods: "فئات المنتجات",
+                foot_news: "النشرة الطبية الفنية",
+                foot_news_sub: "اشترك للحصول على أحدث الكتلوجات والأبحاث التشخيصية لعام 2024."
+            },
+            en: {
+                nav_home: "Home",
+                nav_products: "IVD Solutions",
+                nav_tech: "M-Chip Tech",
+                nav_calc: "Reagent Calc",
+                nav_about: "About Us",
+                nav_compliance: "Quality & Standards",
+                nav_contact: "Contact",
+                btn_header_quote: "Request Quote",
+                hero_badge: "Established 2024 | Advanced Diagnostics Engineering",
+                hero_title_1: "Next-Gen Laboratory Automation",
+                hero_title_2: "In-Vitro Diagnostics (IVD)",
+                hero_title_3: "Uncompromised Diagnostic Precision",
+                hero_desc: "Pioneering medical laboratory standards through automated Clinical Chemistry, CLIA Immunoassays, and M-Chip Microfluidics point-of-care solutions.",
+                btn_explore_solutions: "Explore IVD Solutions",
+                btn_request_demo: "Request Demo & Brochure",
+                stat_1: "Assay Accuracy",
+                stat_2: "IVD Solutions",
+                stat_3: "Quality Standard",
+                stat_4: "Min Sample Volume",
+                hero_canvas_hint: "Click the droplet to simulate blood sample flow inside M-Chip channels",
+                solutions_subtitle: "2024 IVD Equipment & Assay Catalog",
+                solutions_title: "Integrated Diagnostic Systems",
+                solutions_desc: "Select a category to view certified analyzer systems, microfluidic cartridges, and reagent packs.",
+                tab_all: "All",
+                tab_immuno: "CLIA Immunoassay",
+                tab_chem: "Clinical Chemistry",
+                tab_molec: "Molecular PCR",
+                tab_micro: "M-Chip Microfluidics",
+                tab_hema: "Hematology",
+                btn_specs: "Specifications",
+                btn_get_quote: "Get Quote",
+                tech_sub: "Microfluidic Fluid Dynamics",
+                tech_title: "M-Chip Microfluidic Cartridge Architecture",
+                tech_desc: "Precision micro-channel liquid handling executing 4 automated diagnostic phases in under 10 minutes.",
+                step1_title: "Micro-Sample Input",
+                step1_desc: "Inject only 10µL of whole blood with zero manual pre-treatment.",
+                step2_title: "Micro-Mixing Phase",
+                step2_desc: "On-chip spiral channel mixing with lyophilized reagents.",
+                step3_title: "Bead Magnetic Capture",
+                step3_desc: "Target analyte capture via high-affinity magnetic nano-particles.",
+                step4_title: "Optical Detection",
+                step4_desc: "Fluorescent optical readouts sensitive to sub-picogram concentrations.",
+                tech_step_prompt: "Click any step above to inspect the specific M-Chip microfluidic phase mechanics.",
+                calc_sub: "Lab Financial Planning Tool",
+                calc_title: "Reagent Consumption & Cost Estimator",
+                calc_desc: "Enter your daily test volume to calculate reagent savings and efficiency gains with Mono Chrome systems.",
+                lbl_daily_tests: "Daily Test Volume:",
+                lbl_analyzer_type: "Analyzer System Type:",
+                calc_results_head: "Estimated Annual Savings",
+                calc_reagent_vol: "Annual Reagent Saved",
+                calc_time_saved: "Testing Hours Saved",
+                calc_cost_sav: "Estimated Operational Cost Reduction",
+                btn_calc_quote: "Request Custom Feasibility Report",
+                about_tag: "ESTABLISHED 2024 | OUR VISION",
+                about_title: "Leading IVD Innovation Since 2024",
+                about_p1: "Founded in 2024, MONO CHROME FOR IVD SOLUTIONS delivers highly reliable in-vitro diagnostic platforms to empower clinical laboratories across the region.",
+                about_p2: "We combine automated analyzer hardware, high-purity reagents, and comprehensive technical maintenance to ensure zero downtime.",
+                about_feat1: "Maximum Safety",
+                about_feat1_sub: "Compliant with Global Med Standards",
+                about_feat2: "24/7 Tech Support",
+                about_feat2_sub: "Dedicated Bio-Medical Engineers",
+                about_pillars: "Core Operational Pillars",
+                pil_1_title: "Continuous Tech Innovation",
+                pil_1_desc: "Microfluidic integration minimizing human error.",
+                pil_2_title: "Reagent Supply Chain Security",
+                pil_2_desc: "Guaranteed uninterrupted supply of diagnostic kits.",
+                pil_3_title: "Certified Calibration Standards",
+                pil_3_desc: "Rigorous quality control protocols for accurate results.",
+                qual_tag: "CERTIFICATIONS & COMPLIANCE",
+                qual_title: "Compliant with Global Medical Standards",
+                cert_1: "Medical Device Quality System",
+                cert_2: "European In-Vitro Diagnostic CE Mark",
+                cert_3: "Good Manufacturing Practice Reagents",
+                cert_4: "Total Quality Management Services",
+                contact_sub: "SALES & TECHNICAL SUPPORT",
+                contact_title: "Upgrade Your Clinical Laboratory Today",
+                contact_desc: "Get in touch with our specialists for technical specifications, pricing, or on-site demonstration requests.",
+                c_addr_head: "Headquarters",
+                c_email_head: "Direct Email",
+                c_phone_head: "Technical Support Line",
+                form_head: "Laboratory Inquiry Form",
+                f_name: "Full Name *",
+                f_lab: "Hospital / Laboratory Name *",
+                f_email: "Email Address *",
+                f_phone: "Phone / WhatsApp *",
+                f_interest: "Solution Category Interest",
+                f_msg: "Laboratory Requirements & Message",
+                btn_send_form: "Submit Inquiry to MONO CHROME",
+                foot_about: "Specialized provider of next-generation In-Vitro Diagnostics (IVD), lab automation, and microfluidic technologies.",
+                foot_links: "Quick Links",
+                foot_prods: "Product Categories",
+                foot_news: "Technical Bulletin",
+                foot_news_sub: "Subscribe for 2024 clinical research updates and product releases."
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            document.getElementById('lang-label').innerText = currentLang === 'ar' ? 'English' : 'عربي';
+            document.getElementById('lang-label-mobile').innerText = currentLang === 'ar' ? 'EN' : 'AR';
+
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+
+            calculateIVDSavings();
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-toggle-btn').addEventListener('click', toggleMobileMenu);
+
+        // Canvas Microfluidic Particle Animation
+        const canvas = document.getElementById('fluidCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.opacity = Math.random() * 0.6 + 0.2;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.fillStyle = `rgba(153, 0, 17, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 45; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        // Droplet Animation Simulator
+        function triggerDropletAnim() {
+            const bar = document.getElementById('flowProgressBar');
+            const flowText = document.getElementById('flowRateText');
+            bar.style.width = '100%';
+            flowText.innerText = '3.8 µL/sec (Peak)';
+            setTimeout(() => {
+                bar.style.width = '65%';
+                flowText.innerText = '1.2 µL/sec';
+            }, 1500);
+        }
+
+        // Product Filter Tabs
+        function filterProducts(cat) {
+            const buttons = document.querySelectorAll('.prod-filter');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === cat) {
+                    btn.classList.add('burgundy-gradient', 'text-white');
+                    btn.classList.remove('glass-card', 'text-gray-300');
+                } else {
+                    btn.classList.remove('burgundy-gradient', 'text-white');
+                    btn.classList.add('glass-card', 'text-gray-300');
+                }
+            });
+
+            const items = document.querySelectorAll('.product-item');
+            items.forEach(item => {
+                if (cat === 'all' || item.getAttribute('data-cat') === cat) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Quick View Modal Function
+        function openProductQuickView(title, category, speed, method, menu, volume, connectivity) {
+            document.getElementById('qvTitle').innerText = title;
+            document.getElementById('qvCategory').innerText = category;
+            document.getElementById('qvSpeed').innerText = speed;
+            document.getElementById('qvMethod').innerText = method;
+            document.getElementById('qvMenu').innerText = menu;
+            document.getElementById('qvVolume').innerText = volume;
+            document.getElementById('qvConnectivity').innerText = connectivity;
+
+            document.getElementById('quickViewModal').classList.remove('hidden');
+        }
+
+        function closeQuickViewModal() {
+            document.getElementById('quickViewModal').classList.add('hidden');
+        }
+
+        // Quote Modal Functions
+        function openQuoteModal(prodName = 'General IVD Inquiry') {
+            document.getElementById('quoteProductTarget').value = prodName;
+            document.getElementById('quoteModal').classList.remove('hidden');
+        }
+
+        function closeQuoteModal() {
+            document.getElementById('quoteModal').classList.add('hidden');
+        }
+
+        // Interactive Technology Step Details
+        function setActiveChipStep(step) {
+            const details = {
+                1: {
+                    ar: "الخطوة 1: يتم سحب 10 ميكرولتر من الدم عبر الضغط الخاص داخل الشريحة بدقة دون فقد للمحتوى.",
+                    en: "Step 1: 10µL of whole blood is drawn using capillary pressure directly into the chip."
+                },
+                2: {
+                    ar: "الخطوة 2: تتحرك العينة داخل الممرات الحلزونية لتتفاعل مع المحاليل المدمجة مسبقاً وتتأين بانتظام.",
+                    en: "Step 2: Micro-groove spiral channels create fluid turbulence for rapid automated reagent mixing."
+                },
+                3: {
+                    ar: "الخطوة 3: تقوم الحبيبات المغناطيسية الدقيقة بالارتباط مع البروتينات المطلوبة وعزل الشوائب جانبياً.",
+                    en: "Step 3: Magnetic nano-beads isolate target biomarkers from background fluid noise."
+                },
+                4: {
+                    ar: "الخطوة 4: تسلط الحساسات الضوئية أشعة الفلورسنت لقياس النسبة المؤشرة بدقة بيولوجية قياسية.",
+                    en: "Step 4: High-sensitivity optical sensor measures fluorophore signal and displays quantitative result."
+                }
+            };
+            document.getElementById('stepDetailDisplay').innerHTML = `<i class="fa-solid fa-check-circle text-brand-500 mr-2"></i> ${details[step][currentLang]}`;
+        }
+
+        // Calculator Logic
+        function calculateIVDSavings() {
+            const val = document.getElementById('testsSlider').value;
+            const textUnit = currentLang === 'ar' ? 'فحص/يوم' : 'tests/day';
+            document.getElementById('testsVal').innerText = `${val} ${textUnit}`;
+
+            const volSaved = (val * 0.75 * 365) / 1000; // in Liters
+            const hoursSaved = Math.round((val * 2.5 * 365) / 60);
+            const costSaved = Math.round(val * 0.2 * 365);
+
+            document.getElementById('savedReagentVol').innerText = `${volSaved.toFixed(1)} L`;
+            document.getElementById('savedHours').innerText = `${hoursSaved} ${currentLang === 'ar' ? 'ساعة' : 'hrs'}`;
+            document.getElementById('estimatedSavingsCost').innerText = `$${costSaved.toLocaleString()} / ${currentLang === 'ar' ? 'سنة' : 'yr'}`;
+        }
+
+        // Form Submission Handlers
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contactForm').reset();
+            document.getElementById('contactSuccessMsg').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('contactSuccessMsg').classList.add('hidden');
+            }, 5000);
+        }
+
+        function handleQuoteSubmit(e) {
+            e.preventDefault();
+            closeQuoteModal();
+            alert(currentLang === 'ar' ? 'تم تقديم طلبك بنجاح! سيتم التواصل معكم فوراً.' : 'Quote request submitted successfully!');
+        }
+
+        // Initialize Calculator
+        calculateIVDSavings();
+    </script>
+</body>
+</html>
